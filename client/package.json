@@ -19,8 +19,6 @@
     "@testing-library/user-event": "^12.5.0",
     "axios": "^0.26.1",
     "chart.js": "^2.9.4",
-    "homepage":"https//bickeymanandhar.github.io/spendingtracker",
-    "gh-pages": "^3.2.3",
     "google-search-results-nodejs": "^2.1.0",
     "http-proxy-middleware": "^2.0.4",
     "i": "^0.3.7",
@@ -40,8 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "buildncopy": "npm run build && (cp -r build ../server/)",
-    "deploy": " gh-pages -d client/build"
+    "buildncopy": "npm run build && (cp -r build ../server/)"
   },
   "eslintConfig": {
     "extends": [
