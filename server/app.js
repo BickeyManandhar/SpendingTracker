@@ -3,7 +3,7 @@ const app = express()
 const server = require('http').createServer(app)
 const cors = require('cors')
 const SerpApi = require('google-search-results-nodejs');
-const search = new SerpApi.GoogleSearch("bfebad527f654d0744e478f2189e0a440dcb7575037e8e9296fcd0363443956d4");
+const search = new SerpApi.GoogleSearch("e03ecea628ee144d390378d6852ca4a9e915fe838a4fb4fd7b52f843a438b698");
 
 app.use(cors())
 
@@ -11,7 +11,7 @@ app.get('/getProducts', (req, res) => {
   const params = {
     q: req.query?.search ? req.query?.search : 'tv',
     tbm: "shop",
-    location: "Queens County,New York,United States",
+    location: "Dallas",
     hl: "en",
     gl: "us",
     tbs: req.query.filter,
@@ -26,7 +26,7 @@ app.get('/getFilters', (req, res) => {
   const params = {
     q: "tv",
     tbm: "shop",
-    location: "Queens County,New York,United States",
+    location: "Dallas",
     hl: "en",
     gl: "us"
   };
