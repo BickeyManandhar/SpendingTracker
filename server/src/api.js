@@ -4,10 +4,12 @@ const server = require('http').createServer(app)
 const cors = require('cors')
 const SerpApi = require('google-search-results-nodejs');
 const search = new SerpApi.GoogleSearch("b24da6785adb04a15da43433762b199d4bacf41294bde1fc671372593ee4310e");
+const router = express.router();
+const serverless = require("serverless-http");
 
 app.use(cors())
 
-app.get('/getProducts', (req, res) => {
+router.get('/getProducts', (req, res) => {
   const params = {
     q: req.query?.search ? req.query?.search : 'tv',
     tbm: "shop",
@@ -22,7 +24,7 @@ app.get('/getProducts', (req, res) => {
   search.json(params, callback);
 })
 
-app.get('/getFilters', (req, res) => {
+router.get('/getFilters', (req, res) => {
   const params = {
     q: "tv",
     tbm: "shop",
@@ -35,6 +37,8 @@ app.get('/getFilters', (req, res) => {
   };
   search.json(params, callback);
 })
+app.use(`/netlify/function/api`, router);
+module.exports = app;
+module.exports.handler = serverless(app);
 
-const port = 7000
-server.listen(port, () => console.log(`SERVER IS RUNNING ON PORT: ${port}`))
+
